@@ -11,3 +11,11 @@ This app will serve as a way for users to share their sports bets with their fri
 
 ## DB Diagram
 ![Screen Shot 2022-06-03 at 10 45 42 AM](https://user-images.githubusercontent.com/101526418/171879310-fc59a770-90f7-48f2-b077-4f920ab45555.png)
+
+
+## User Stories
+As a user, I want to be able to make an account/sign in
+As a user, I want to be able to post a screenshot of my bet with a description
+As a user, I want to be able to comment on other peoples bet posts
+As a user, I want to be able to like/dislike comments/posts
+
