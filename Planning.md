@@ -25,3 +25,7 @@ Each Bet will look like the below
 
 The Slip Stream will look like the below (User will basically just be able to scroll through bets in chronological order)
 ![Screen Shot 2022-06-03 at 11 05 42 AM](https://user-images.githubusercontent.com/101526418/171881183-07eced85-d917-43eb-8feb-bcc365fd8ef5.png)
+
+## Stretch Goals
+- Allow users to be able to tail a bet by actually just clicking a button
+- a follower following relationship
