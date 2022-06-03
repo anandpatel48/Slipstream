@@ -14,8 +14,14 @@ This app will serve as a way for users to share their sports bets with their fri
 
 
 ## User Stories
-As a user, I want to be able to make an account/sign in
-As a user, I want to be able to post a screenshot of my bet with a description
-As a user, I want to be able to comment on other peoples bet posts
-As a user, I want to be able to like/dislike comments/posts
+- As a user, I want to be able to make an account/sign in
+- As a user, I want to be able to post a screenshot of my bet with a description
+- As a user, I want to be able to comment on other peoples bet posts
+- As a user, I want to be able to like/dislike comments/posts
 
+## Wireframs
+Each Bet will look like the below
+![Screen Shot 2022-06-03 at 11 03 43 AM](https://user-images.githubusercontent.com/101526418/171881074-1d06a6ba-fb90-412b-a7bd-e9e49cf78f53.png)
+
+The Slip Stream will look like the below (User will basically just be able to scroll through bets in chronological order)
+![Screen Shot 2022-06-03 at 11 05 42 AM](https://user-images.githubusercontent.com/101526418/171881183-07eced85-d917-43eb-8feb-bcc365fd8ef5.png)
