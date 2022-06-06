@@ -9,6 +9,7 @@
 <body>
     <nav>
         {% if user.is_authenticated %} 
+        <span>{{user.username}}</span>
         <a href = '/'>Home</a>
         <a href = "{% url 'slipstream' %}">Slipstream</a>
         <a href = "{% url 'logout' %}">Logout</a>
