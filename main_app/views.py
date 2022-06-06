@@ -26,3 +26,5 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
+class Slipstream(TemplateView):
+    template_name = "slipstream.html"
