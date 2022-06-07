@@ -7,8 +7,14 @@
     {% for bet in bets %} 
     <hr>
     <a href = "{% url 'bet_detail' bet.pk %}">
+        {% for photo in photos %}
+        {% if photo.bet_id == bet.pk %}
+            <img src = "{{ photo.url }}" height = "300">
+        {% endif %}
+        {% endfor %}
         <p>{{bet.description}}</p>
         <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>
+        
     </a>
     {% if user.is_authenticated %}
         {% if user.id == bet.user.id %} 

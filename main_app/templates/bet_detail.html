@@ -2,6 +2,16 @@
 {% block content %}
 <h1>Bet posted by {{ bet.user }}</h1>
 <h5>Posted on {{ bet.created_at }}</h5>
+{% for photo in bet.photo_set.all %} 
+    <img src = "{{ photo.url }}" height = "500">
+{% empty %}
+    <p>No photo uploaded</p>
+{% endfor %}
+<form action = "{% url 'add_photo' bet.id %}" enctype="multipart/form-data" method = "POST">
+    {% csrf_token %} 
+    <input type = "file" name = "photo-file">
+    <input type = 'submit' value = "upload photo">
+</form>
 <p>{{ bet.description }}</p>
 <div>
         <button type = "submit", name = "bet_id", value = "{{ bet.id }}">Like</button><span class = like-count></span>

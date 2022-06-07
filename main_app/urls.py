@@ -10,4 +10,5 @@ urlpatterns = [
     path('bets/<int:pk>/delete', views.BetDelete.as_view(), name = "bet_delete"),
     path('bets/<int:pk>/comment/', views.CommentCreate.as_view(), name = "comment_create"),
     path('comment/<int:pk>/delete/', views.CommentDelete.as_view(), name = "comment_delete"),
+    path('bets/<int:bet_id>/add_photo/', views.add_photo, name = "add_photo")
 ]

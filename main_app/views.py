@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from .models import Bets
 from .models import Comment
+from .models import Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
@@ -15,6 +16,9 @@ from .forms import CommentForm
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 import os
+import uuid
+import boto3
+from botocore.exceptions import ClientError
 # Create your views here.
 
 class Home(TemplateView):
@@ -41,6 +45,7 @@ class Slipstream(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['bets'] = Bets.objects.all().reverse()
+        context['photos'] = Photo.objects.all()
         return context
 
 @method_decorator(login_required, name = "dispatch")
@@ -63,6 +68,7 @@ class BetDetail(DetailView):
     def get_context_data(self, ** kwargs):
         context = super(BetDetail, self).get_context_data(**kwargs)
         return context
+
 
 class BetDelete(DeleteView):
     model = Bets
@@ -92,12 +98,24 @@ class CommentDelete(DeleteView):
 
 
 
-def some_function(request):
-    secret_key = os.environ['SECRET_KEY']
+def add_photo(request, bet_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            print(url)
+            Photo.objects.create(url=url, bet_id=bet_id)
+        except ClientError as e:
+            print(f"this is the error: {e}")
+            print(os.environ['AWS_ACCESS_KEY_ID'])
+    return redirect('/slipstream/')
 
 
     
-
 
 
 
