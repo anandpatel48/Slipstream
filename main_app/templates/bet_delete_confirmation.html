@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_authenticated %} 
+    {% if user.id == bet.user.id %}
 <h1>Are you sure you want to delete this bet?</h1>
 <form method = "post">
     {% csrf_token %}
@@ -8,4 +10,9 @@
         <a href = "{% url 'slipstream' %}">Nevermind</a>
     </div>
 </form>
+    {% else %}
+        <h3>You did not post this bet, you can not delete it</h3>
+    {% endif %}
+{% endif %}
+
 {% endblock %}

@@ -9,8 +9,13 @@
     <a href = "{% url 'bet_detail' bet.pk %}">
         <p>{{bet.description}}</p>
         <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>
-        {% empty %} 
     </a>
+    {% if user.is_authenticated %}
+        {% if user.id == bet.user.id %} 
+            <a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a>
+        {% endif %}
+    {% endif %}
+        {% empty %} 
     <article class = "message">
         <p>No bets posted</p>
     </article>
