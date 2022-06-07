@@ -83,9 +83,11 @@ class CommentCreate(CreateView):
         return reverse('bet_detail', kwargs = {'pk': self.kwargs['pk']})
 
     
+class CommentDelete(DeleteView):
+    model = Comment
+    template_name = 'comment_delete_confirmation.html'
+    success_url = '/slipstream/'
 
-
-    
 
 
 
