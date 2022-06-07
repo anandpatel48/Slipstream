@@ -8,5 +8,6 @@ urlpatterns = [
     path('slipstream/', views.Slipstream.as_view(), name = "slipstream"),
     path('bets/new/', views.BetCreate.as_view(), name = "bet_create"),
     path('bets/<int:pk>', views.BetDetail.as_view(), name = "bet_detail"),
-    
+    path('bets/<int:pk>/delete', views.BetDelete.as_view(), name = "bet_delete"),
+    path('bets/<int:pk>/comment/', views.CommentCreate.as_view(), name = "comment_create"),   
 ]

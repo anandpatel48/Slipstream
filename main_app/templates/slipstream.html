@@ -5,6 +5,7 @@
 <div>
     <a href = "{% url 'bet_create' %}">Post a Bet</a>
     {% for bet in bets %} 
+    <hr>
     <a href = "{% url 'bet_detail' bet.pk %}">
         <p>{{bet.description}}</p>
         <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>

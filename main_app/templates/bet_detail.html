@@ -7,4 +7,21 @@
     <button type = "button"><img src = "https://cdn-icons-png.flaticon.com/512/633/633991.png" alt = "like" width = "25" height = "25"></button>
     <button type = "button"><img src = "https://cdn-icons.flaticon.com/png/512/880/premium/880613.png?token=exp=1654610815~hmac=331d8bb2adc635b4a76a145282d70a72" alt = "dislike" width = "25" height = "25"></button>
 </div>
+<div>
+    <h2>Comments...</h2>
+    {% if not bet.comments.all %}
+        No Comments Yet...<a href = "{% url 'comment_create' bet.pk %}">
+            Add One
+        </a>
+    {% else %} 
+    <a href = "{% url 'comment_create' bet.pk %}">Add Comment</a>
+    <br>
+    <br>
+        {% for comment in bet.comments.all %}
+            {{ comment.content }}
+            <h4>Created by {{ comment.user }} on {{ comment.created_at }}</h4>
+            <hr>
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

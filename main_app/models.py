@@ -19,4 +19,15 @@ class Bets(models.Model):
         ordering = ['created_at']
 
 
+class Comment(models.Model):
+    bet = models.ForeignKey(Bets, related_name = "comments", on_delete = models.CASCADE, default = 1)
+    user = models.ForeignKey(User, on_delete = models.CASCADE, default = 1)
+    content = models.CharField(max_length = 280)
+    created_at = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+        def __str__(self):
+            return '%s - %s' % (self.post.content, self.user)
 

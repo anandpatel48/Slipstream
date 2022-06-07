@@ -6,11 +6,13 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from .models import Bets
+from .models import Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from .forms import CommentForm
+from django.urls import reverse, reverse_lazy
 # Create your views here.
 
 class Home(TemplateView):
@@ -59,6 +61,45 @@ class BetDetail(DetailView):
     def get_context_data(self, ** kwargs):
         context = super(BetDetail, self).get_context_data(**kwargs)
         return context
+
+class BetDelete(DeleteView):
+    model = Bets
+    template_name = 'bet_delete_confirmation.html'
+    success_url = '/slipstream/'
+
+    
+class CommentCreate(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = "comment_create.html"
+    
+    def form_valid(self, form):
+        form.instance.bet_id = self.kwargs['pk']
+        form.instance.user = self.request.user
+        print(form.instance.bet_id)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('bet_detail', kwargs = {'pk': self.kwargs['pk']})
+
+    
+
+
+    
+
+
+
+
+
+
+        
+
+
+    
+
+
+
+
 
 
 
