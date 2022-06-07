@@ -1,21 +1,23 @@
 {% extends 'base.html' %} 
 {% block content %} 
-<h1>This is where the posts will be</h1>
+<h1>SlipStream</h1>
 
 <div>
     <a href = "{% url 'bet_create' %}">Post a Bet</a>
     {% for bet in bets %} 
     <hr>
-    <a href = "{% url 'bet_detail' bet.pk %}">
-        {% for photo in photos %}
-        {% if photo.bet_id == bet.pk %}
+    {% for photo in photos %}
+    {% if photo.bet_id == bet.pk %}
+        <a href = "{% url 'bet_detail' bet.pk %}">
             <img src = "{{ photo.url }}" height = "500">
-        {% endif %}
-        {% endfor %}
+        </a>
+    {% endif %}
+    {% endfor %}
         <p>{{bet.description}}</p>
-        <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>
+        <a href = "{% url 'bet_detail' bet.pk %}">
+            <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>
+        </a>
         
-    </a>
     {% if user.is_authenticated %}
         {% if user.id == bet.user.id %} 
             <a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a>

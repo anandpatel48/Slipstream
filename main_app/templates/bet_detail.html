@@ -7,11 +7,17 @@
 {% empty %}
     <p>No photo uploaded</p>
 {% endfor %}
-<form action = "{% url 'add_photo' bet.id %}" enctype="multipart/form-data" method = "POST">
-    {% csrf_token %} 
-    <input type = "file" name = "photo-file">
-    <input type = 'submit' value = "upload photo">
-</form>
+{% if user.is_authenticated %}
+    {% if user == bet.user %}
+        <form action = "{% url 'add_photo' bet.id %}" enctype="multipart/form-data" method = "POST">
+            {% csrf_token %} 
+            <input type = "file" name = "photo-file">
+            <br>
+            <br>
+            <input type = 'submit' value = "upload photo">
+        </form>
+    {% endif %}
+{% endif %}
 <p>{{ bet.description }}</p>
 <div>
         <button type = "submit", name = "bet_id", value = "{{ bet.id }}">Like</button><span class = like-count></span>
