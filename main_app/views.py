@@ -75,6 +75,12 @@ class BetDelete(DeleteView):
     template_name = 'bet_delete_confirmation.html'
     success_url = '/slipstream/'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['bet'] = Bets.objects.get(id = pk)
+        return context
+
     
 class CommentCreate(CreateView):
     model = Comment
@@ -111,7 +117,6 @@ def add_photo(request, bet_id):
             Photo.objects.create(url=url, bet_id=bet_id)
         except ClientError as e:
             print(f"this is the error: {e}")
-            print(os.environ['AWS_ACCESS_KEY_ID'])
     return redirect('/slipstream/')
 
 

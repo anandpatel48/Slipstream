@@ -9,7 +9,7 @@
     <a href = "{% url 'bet_detail' bet.pk %}">
         {% for photo in photos %}
         {% if photo.bet_id == bet.pk %}
-            <img src = "{{ photo.url }}" height = "300">
+            <img src = "{{ photo.url }}" height = "500">
         {% endif %}
         {% endfor %}
         <p>{{bet.description}}</p>
