@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Bet posted by {{ bet.user }}</h1>
+<h5>Posted on {{ bet.created_at }}</h5>
+<p>{{ bet.description }}</p>
+<div>
+    <button type = "button"><img src = "https://cdn-icons-png.flaticon.com/512/633/633991.png" alt = "like" width = "25" height = "25"></button>
+    <button type = "button"><img src = "https://cdn-icons.flaticon.com/png/512/880/premium/880613.png?token=exp=1654610815~hmac=331d8bb2adc635b4a76a145282d70a72" alt = "dislike" width = "25" height = "25"></button>
+</div>
+{% endblock %}

@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from .models import Bets
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -38,6 +39,7 @@ class Slipstream(TemplateView):
         context['bets'] = Bets.objects.all().reverse()
         return context
 
+@method_decorator(login_required, name = "dispatch")
 class BetCreate(CreateView):
     model = Bets
     fields = ['description']
@@ -47,3 +49,17 @@ class BetCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(BetCreate, self).form_valid(form)
+
+
+class BetDetail(DetailView):
+    model = Bets
+    context_object_name = "bet"
+    template_name = "bet_detail.html"
+
+    def get_context_data(self, ** kwargs):
+        context = super(BetDetail, self).get_context_data(**kwargs)
+        return context
+
+
+
+
