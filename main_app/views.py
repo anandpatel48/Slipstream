@@ -53,11 +53,13 @@ class BetCreate(CreateView):
     model = Bets
     fields = ['description']
     template_name = "bet_create.html"
-    success_url = "/slipstream/"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(BetCreate, self).form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('bet_detail', kwargs = {'pk': self.object.pk})
 
 
 class BetDetail(DetailView):
