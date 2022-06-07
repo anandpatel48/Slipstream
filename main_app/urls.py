@@ -1,6 +1,5 @@
 from django.urls import path, include
 from . import views
-
 urlpatterns = [
     path('', views.Home.as_view(), name = "home"),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -10,5 +9,5 @@ urlpatterns = [
     path('bets/<int:pk>', views.BetDetail.as_view(), name = "bet_detail"),
     path('bets/<int:pk>/delete', views.BetDelete.as_view(), name = "bet_delete"),
     path('bets/<int:pk>/comment/', views.CommentCreate.as_view(), name = "comment_create"),
-    path('comment/<int:pk>/delete/', views.CommentDelete.as_view(), name = "comment_delete"),   
+    path('comment/<int:pk>/delete/', views.CommentDelete.as_view(), name = "comment_delete"),
 ]

@@ -31,3 +31,10 @@ class Comment(models.Model):
         def __str__(self):
             return '%s - %s' % (self.post.content, self.user)
 
+
+class Photo(models.Model):
+    url = models.CharField(max_length = 400)
+    bet = models.ForeignKey(Bets, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for bet_id: {self.bet_id} @ {self.url}"

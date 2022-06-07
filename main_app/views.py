@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -13,6 +13,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .forms import CommentForm
 from django.urls import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
+import os
 # Create your views here.
 
 class Home(TemplateView):
@@ -90,11 +92,8 @@ class CommentDelete(DeleteView):
 
 
 
-
-
-
-
-        
+def some_function(request):
+    secret_key = os.environ['SECRET_KEY']
 
 
     
