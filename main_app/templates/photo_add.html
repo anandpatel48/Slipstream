@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{user.id}}</h1>
+{% if user == bet.user %}
+<form action = "{% url 'add_photo' bet.id %}" enctype="multipart/form-data" method = "POST">
+    {% csrf_token %} 
+    <input type = "file" name = "photo-file">
+    <br>
+    <br>
+    <input type = 'submit' value = "upload photo">
+</form>
+{% else %}
+<h3>You did not post this bet, you are not allowed to add a photo to it</h3>
+{% endif %}
+{% endblock %}

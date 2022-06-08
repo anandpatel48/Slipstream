@@ -59,7 +59,7 @@ class BetCreate(CreateView):
         return super(BetCreate, self).form_valid(form)
     
     def get_success_url(self):
-        return reverse('bet_detail', kwargs = {'pk': self.object.pk})
+        return reverse('photo_add', kwargs = {'pk': self.object.pk})
 
 
 class BetDetail(DetailView):
@@ -125,7 +125,14 @@ def add_photo(request, bet_id):
     
 
 
+class PhotoAdd(TemplateView):
+    template_name = "photo_add.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['bet'] = Bets.objects.get(id = pk)
+        return context
 
 
 
