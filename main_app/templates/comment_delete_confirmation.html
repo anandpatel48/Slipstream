@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Comment Delete Confirmation{% endblock %}
 {% block content %}
 {% if user.is_authenticated %} 
     {% if user.id == comment.user.id %}
