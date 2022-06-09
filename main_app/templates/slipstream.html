@@ -11,8 +11,8 @@
             <p class = "card-text">{{bet.description}}</p>
             {% for photo in photos %}
             {% if photo.bet_id == bet.pk %}
-                <a href = "{% url 'bet_detail' bet.pk %}">
-                    <img src = "{{ photo.url }}" height = "500">
+                <a class = "d-flex" href = "{% url 'bet_detail' bet.pk %}">
+                    <img src = "{{ photo.url }}" height = "400">
                 </a>
             {% endif %}
             {% endfor %}

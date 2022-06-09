@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}Bet Details{% endblock %}
 {% block content %}
-<h1>Bet posted by {{ bet.user }}</h1>
-<h5>Posted on {{ bet.created_at }}</h5>
-{% for photo in bet.photo_set.all %} 
-    <img src = "{{ photo.url }}" height = "500">
-{% empty %}
-    <p>No photo uploaded</p>
-{% endfor %}
-<p>{{ bet.description }}</p>
-<div>
-        <button type = "submit", name = "bet_id", value = "{{ bet.id }}">Like</button><span class = like-count></span>
+<div class = "card">
+    <div class = "card-body">
+        <h2 class = "card-title">{{bet.user}}'s bet</h2>
+        <h6 class = "card-subtitle mb-2 text-muted">Posted on {{bet.created_at}}</h6>
+        <p class = "card-text">{{bet.description}}</p>
+        {% for photo in bet.photo_set.all %} 
+            <img src = "{{ photo.url }}" height = "450">
+        {% empty %}
+            <p>No photo uploaded</p>
+        {% endfor %}
+    </div>
 </div>
 <div>
     <h2>Comments...</h2>
@@ -23,14 +24,18 @@
     <br>
     <br>
         {% for comment in bet.comments.all %}
-            {{ comment.content }}
-            <h4>Comment from {{ comment.user }} on {{ comment.created_at }}</h4>
-            {% if user.is_authenticated %}
-                {% if user.id == comment.user.id %}
-                    <a href = "{% url 'comment_delete' comment.pk %}">Delete Comment</a>
+        <div class = "card">
+            <div class = "card-body">
+                <h5 class = "card-title">{{comment.user}}'s comment</h5>
+                <p class = "card-subtitle mb-2 text-muted">{{comment.created_at}}</p>
+                <p class = "card-text">{{comment.content}}</p>
+                {% if user.is_authenticated %}
+                    {% if user.id == comment.user.id %}
+                        <a href = "{% url 'comment_delete' comment.pk %}">Delete Comment</a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-            <hr>
+            </div>
+        </div>
         {% endfor %}
     {% endif %}
 </div>
