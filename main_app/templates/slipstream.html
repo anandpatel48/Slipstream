@@ -1,29 +1,31 @@
 {% extends 'base.html' %} 
 {% block content %} 
 <h1>SlipStream</h1>
-
 <div>
     <a href = "{% url 'bet_create' %}">Post a Bet</a>
     {% for bet in bets %} 
-    <hr>
-    {% for photo in photos %}
-    {% if photo.bet_id == bet.pk %}
-        <a href = "{% url 'bet_detail' bet.pk %}">
-            <img src = "{{ photo.url }}" height = "500">
-        </a>
-    {% endif %}
-    {% endfor %}
-        <p>{{bet.description}}</p>
-        <a href = "{% url 'bet_detail' bet.pk %}">
-            <h3>Posted by {{bet.user}} on {{ bet.created_at }}</h3>
-        </a>
-        
-    {% if user.is_authenticated %}
-        {% if user.id == bet.user.id %} 
-            <a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a>
-        {% endif %}
-    {% endif %}
-        {% empty %} 
+    <div class = "card">
+        <div class = "card-body">
+            <h4 class = "card-title">{{bet.user}}'s Bet</h4>
+            <h6 class = "card-subtitle mb-2 text-muted">Made on {{bet.created_at}}</h6>
+            <p class = "card-text">{{bet.description}}</p>
+            {% for photo in photos %}
+            {% if photo.bet_id == bet.pk %}
+                <a href = "{% url 'bet_detail' bet.pk %}">
+                    <img src = "{{ photo.url }}" height = "500">
+                </a>
+            {% endif %}
+            {% endfor %}
+            {% if user.is_authenticated %}
+                {% if user.id == bet.user.id %} 
+                <div>
+                    <button class = "btn btn-primary"><a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a></button>
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    {% empty %} 
     <article class = "message">
         <p>No bets posted</p>
     </article>

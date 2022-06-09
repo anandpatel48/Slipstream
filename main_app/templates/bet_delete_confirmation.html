@@ -7,8 +7,8 @@
 <form method = "post">
     {% csrf_token %}
     <div>
-        <input type = "submit" value = "Confirm"/>
-        <a href = "{% url 'slipstream' %}">Nevermind</a>
+        <button type = "submit" class = "btn btn-primary">Confirm</button>
+        <button class = "btn btn-primary"><a class = "nevermind" href = "{% url 'slipstream' %}">Nevermind</a></button>
     </div>
 </form>
     {% else %}

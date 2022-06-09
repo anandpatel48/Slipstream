@@ -2,9 +2,10 @@
 {% block title %} Post a bet {% endblock %}
 {% block content %}
 <h1>Post a Bet</h1>
+<h4>This page will take you to the next page where you will attach a photo to your bet.</h4>
 <form method = "post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type = "submit" value = "Submit" />
+    <button type = "submit" class = "btn btn-primary">Submit</button>
 </form>
 {% endblock %}
