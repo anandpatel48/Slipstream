@@ -1,3 +1,7 @@
 body {
-    background-color: bisque;
+    background-color: rgb(70, 149, 149);
+}
+
+.username {
+    color: white
 }
