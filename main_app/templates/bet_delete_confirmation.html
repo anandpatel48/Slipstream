@@ -8,7 +8,7 @@
     {% csrf_token %}
     <div>
         <button type = "submit" class = "btn btn-primary">Confirm</button>
-        <button class = "btn btn-primary"><a class = "nevermind" href = "{% url 'slipstream' %}">Nevermind</a></button>
+        <a class = "nevermind" href = "{% url 'slipstream' %}">Nevermind</a>
     </div>
 </form>
     {% else %}

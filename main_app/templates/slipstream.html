@@ -19,7 +19,7 @@
             {% if user.is_authenticated %}
                 {% if user.id == bet.user.id %} 
                 <div>
-                    <button class = "btn btn-primary"><a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a></button>
+                    <a href = "{% url 'bet_delete' bet.pk %}">Delete this bet</a>
                 </div>
                 {% endif %}
             {% endif %}
