@@ -28,4 +28,4 @@ The Slip Stream will look like the below (User will basically just be able to sc
 
 ## Stretch Goals
 - Allow users to be able to tail a bet by actually just clicking a button
-- a follower following relationship
+- a follower following relationship :)
