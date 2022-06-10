@@ -1,8 +1,12 @@
 {% extends 'base.html' %} 
 {% block content %} 
 <h1>Slipstream home</h1>
+{% if user.is_authenticated %}
+<h4>Logged in as {{user.username}}</h4>
+{% else %}
 <a href = "/accounts/login">Log In</a>
 <a href = "/accounts/signup">Sign Up</a>
+{% endif %}
 <h3>About:</h3>
 <p>This app will allow users to log in and post betslips for the bets they made on any given day.</p>
 <p>Other users will be able to comment on posts to share what they think of their bets.</p>
