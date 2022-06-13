@@ -11,10 +11,21 @@ https://ap-slipstream.herokuapp.com/
 - As a user, I want to be able to comment on other peoples bet posts
 - As a user, I want to be able to like/dislike comments/posts
 
+## Screenshots
+![Screen Shot 2022-06-13 at 10 18 52 AM](https://user-images.githubusercontent.com/101526418/173374770-2ee644ef-fc62-4a1f-8635-e1c0dc2399ec.png)
+![Screen Shot 2022-06-13 at 10 19 08 AM](https://user-images.githubusercontent.com/101526418/173374792-3ad5eb2e-594c-4fda-8721-4a0a787f8bf4.png)
+![Screen Shot 2022-06-13 at 10 19 16 AM](https://user-images.githubusercontent.com/101526418/173374811-1287e33e-189e-4e8d-9652-7f0ea00f4e57.png)
+
+
+
+
+## Wireframes
 Each Bet will look like the below
+
 ![Screen Shot 2022-06-03 at 11 03 43 AM](https://user-images.githubusercontent.com/101526418/171881074-1d06a6ba-fb90-412b-a7bd-e9e49cf78f53.png)
 
 The Slip Stream will look like the below (User will basically just be able to scroll through bets in chronological order)
+
 ![Screen Shot 2022-06-03 at 11 05 42 AM](https://user-images.githubusercontent.com/101526418/171881183-07eced85-d917-43eb-8feb-bcc365fd8ef5.png)
 
 
