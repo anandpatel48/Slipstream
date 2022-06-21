@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+# Figure out how to make a model for profile with picture to it
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 
