@@ -9,3 +9,4 @@ admin.site.register(Profile)
 admin.site.register(Bets)
 admin.site.register(Comment)
 admin.site.register(Photo)
+# Will add a likes one too"
