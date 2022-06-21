@@ -1,6 +1,7 @@
 from django import forms
 from .models import Comment
 
+# doing forms for comments
 class CommentForm(forms.ModelForm):
     content = forms.CharField(label = "", widget = forms.Textarea(
         attrs = {
