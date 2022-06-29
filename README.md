@@ -37,6 +37,6 @@ The Slip Stream will look like the below (User will basically just be able to sc
 - Add a search feature that allows users to search for other people and follow them if they wish
 - Add a profile page that shows a users posts
 
-## Touch code parts
+## Tough code parts
 - getting AWS to work
 <img width="755" alt="Screen Shot 2022-06-13 at 9 06 00 AM" src="https://user-images.githubusercontent.com/101526418/173360356-2e005093-6abb-42a3-b482-993067b43a27.png">
