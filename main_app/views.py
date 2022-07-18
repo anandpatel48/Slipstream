@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from .models import Bets
 from .models import Comment
 from .models import Photo
+from .models import Profile
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
@@ -133,7 +134,6 @@ class PhotoAdd(TemplateView):
         pk = self.kwargs['pk']
         context['bet'] = Bets.objects.get(id = pk)
         return context
-
 
 
 
