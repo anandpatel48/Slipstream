@@ -6,6 +6,13 @@ from django.contrib.auth.models import User
 # Figure out how to make a model for profile with picture to it
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
+    following = models.ManyToManyField(User, related_name = "following", blank = True)
+
+    def profiles_posts(self):
+        pass
+    
+    def __str__(self):
+        return str(self.user.username)
 
 
 class Bets(models.Model):
