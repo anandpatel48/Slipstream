@@ -11,5 +11,6 @@ urlpatterns = [
     path('bets/<int:pk>/comment/', views.CommentCreate.as_view(), name = "comment_create"),
     path('comment/<int:pk>/delete/', views.CommentDelete.as_view(), name = "comment_delete"),
     path('bets/<int:pk>/PhotoAdd', views.PhotoAdd.as_view(), name = "photo_add"),
-    path('bets/<int:bet_id>/add_photo/', views.add_photo, name = "add_photo")
+    path('bets/<int:bet_id>/add_photo/', views.add_photo, name = "add_photo"),
+    path('profile/<int:pk>', profile, name='users-profile'),
 ]

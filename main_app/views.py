@@ -136,4 +136,8 @@ class PhotoAdd(TemplateView):
         return context
 
 
-
+class Profile(TemplateView):
+    template_name = 'profile.html'
+    model = Profile
+    
+    def get_context_data(self, **kwargs):
