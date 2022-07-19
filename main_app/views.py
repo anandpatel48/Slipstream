@@ -9,7 +9,9 @@ from .models import Bets
 from .models import Comment
 from .models import Photo
 from .models import Profile
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import User
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, BaseDetailView
+from braces.views import SelectRelatedMixin
 from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -136,8 +138,15 @@ class PhotoAdd(TemplateView):
         return context
 
 
-class Profile(TemplateView):
-    template_name = 'profile.html'
-    model = Profile
-    
-    def get_context_data(self, **kwargs):
+class Profile(SelectRelatedMixin, BaseDetailView, TemplateView):
+  model = User
+  template_name = 'profile.html'
+  select_related = ('profile',)
+
+  def get_object(self):
+   return self.get_queryset().get(user=self.kwargs['user'])
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    content['user'] = self.object
+    return context

@@ -10,6 +10,7 @@ gunicorn = "*"
 psycopg2 = "*"
 django-environ = "*"
 django-on-heroku = "*"
+django-braces = "*"
 
 [dev-packages]
 
