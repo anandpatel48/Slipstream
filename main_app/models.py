@@ -8,11 +8,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     following = models.ManyToManyField(User, related_name = "following", blank = True)
 
-    # def profiles_posts(self):
-    #     pass
+    def profiles_posts(self):
+        pass
     
-    # def __str__(self):
-    #     return str(self.user.username)
+    def __str__(self):
+        return str(self.user.username)
 
 
 class Bets(models.Model):
